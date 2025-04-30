@@ -8,6 +8,7 @@ jobs:
     steps:
         - name: Check PR Source
           run: |
+            echo "You are trying to merge a pull request from" ${{ vars.ALLOW_PULL_REQUEST_FROM_BRANCH }} "to" ${{ github.event.pull_request.base.ref }}
             if [ "${{ github.event.pull_request.head.ref }}" != "${{ vars.ALLOW_PULL_REQUEST_FROM_BRANCH }}" ]; then
                 echo "This PR is not from the" ${{vars.ALLOW_PULL_REQUEST_FROM_BRANCH}} "branch. Exiting."
                 exit 1
