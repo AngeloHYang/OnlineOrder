@@ -1,0 +1,15 @@
+on:
+  pull_request:
+    branches:
+        - main
+jobs:
+  check-pr-source:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Check PR Source
+          run: |
+            if [ "${{ github.event.pull_request.head.ref }}" != "${{ vars.ALLOW_PULL_REQUEST_FROM_BRANCH }}" ]; then
+                echo "This PR is not from the" ${{vars.ALLOW_PULL_REQUEST_FROM_BRANCH}} "branch. Exiting."
+                exit 1
+            fi
+            echo "This PR is from the main branch. Proceeding."
