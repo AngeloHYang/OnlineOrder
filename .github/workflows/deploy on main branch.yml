@@ -5,6 +5,7 @@ on:
 jobs:
   check-pr-source:
     runs-on: ubuntu-latest
+    environment: Deploy On main branch
     steps:
         - name: Check PR Source
           run: |
